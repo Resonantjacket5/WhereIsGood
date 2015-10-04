@@ -13,16 +13,16 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Group.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Distance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Grade)
+            @Html.DisplayNameFor(model => model.Cuisine)
         </th>
         <th></th>
     </tr>
@@ -30,16 +30,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Group.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Distance)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grade)
+            @Html.DisplayFor(modelItem => item.Cuisine)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PreferenceID }) |

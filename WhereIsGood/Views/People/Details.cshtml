@@ -27,35 +27,6 @@
             @Html.DisplayFor(model => model.FirstMidName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PreferenceDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PreferenceDate)
-        </dd>
-
-
-        <dd>
-            <table class="table">
-                <tr>
-                    <th>Course Title</th>
-                    <th>Grade</th>
-                </tr>
-                @foreach (var item in Model.Preferences)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Group.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Grade)
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
-
     </dl>
 </div>
 <p>

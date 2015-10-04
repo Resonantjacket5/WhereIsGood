@@ -27,6 +27,13 @@
             @Html.DisplayFor(model => model.City)
         </dd>
 
+        <dt>
+            Current Preferred Restaurant:
+        </dt>
+
+        <dd>
+            @Html.Partial("_GroupRestaurant")
+        </dd>
     </dl>
 </div>
 <p>

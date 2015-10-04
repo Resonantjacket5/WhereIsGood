@@ -25,6 +25,7 @@ namespace WhereIsGood
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/freelancer.css",
                       "~/Content/site.css"));
         }
     }

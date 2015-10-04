@@ -18,7 +18,8 @@ namespace WhereIsGood.Controllers
         // GET: Preferences
         public ActionResult Index()
         {
-            return View(db.Preferences.ToList());
+            var preferences = db.Preferences.Include(p => p.Group).Include(p => p.Person);
+            return View(preferences.ToList());
         }
 
         // GET: Preferences/Details/5
@@ -39,6 +40,8 @@ namespace WhereIsGood.Controllers
         // GET: Preferences/Create
         public ActionResult Create()
         {
+            ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title");
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName");
             return View();
         }
 
@@ -47,7 +50,7 @@ namespace WhereIsGood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PreferenceID,Distance,CourseID,StudentID,Grade")] Preference preference)
+        public ActionResult Create([Bind(Include = "PreferenceID,Distance,GroupID,PersonID,Cuisine")] Preference preference)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +59,8 @@ namespace WhereIsGood.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title", preference.GroupID);
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName", preference.PersonID);
             return View(preference);
         }
 
@@ -71,6 +76,8 @@ namespace WhereIsGood.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title", preference.GroupID);
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName", preference.PersonID);
             return View(preference);
         }
 
@@ -79,7 +86,7 @@ namespace WhereIsGood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PreferenceID,Distance,CourseID,StudentID,Grade")] Preference preference)
+        public ActionResult Edit([Bind(Include = "PreferenceID,Distance,GroupID,PersonID,Cuisine")] Preference preference)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +94,8 @@ namespace WhereIsGood.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title", preference.GroupID);
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName", preference.PersonID);
             return View(preference);
         }
 
