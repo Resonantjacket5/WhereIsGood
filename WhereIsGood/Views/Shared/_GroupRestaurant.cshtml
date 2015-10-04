@@ -15,45 +15,226 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-            var mapurl = "https://maps.googleapis.com/maps/api/geocode/json?address=Nashville,+TN";
 
-            $.ajax({
-                url: mapurl,
-                type: 'GET',
-                dataType: 'json', // perhaps jsonp
-                success: function (json) {
-                    alert("Success");
 
-                    document.getElementById("lat").textContent = json.results[00]["geometry"]["bounds"]["northeast"].lat;
-                    document.getElementById("lat").textContent = json.results[00]["geometry"]["location"].lng;
-                },
-                error: function (xhr, status, err) {
-                    alert("ajax error: " + err.toString());
+
+    var address = document.getElementById("address").textContent;
+    var mapurl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+    //mapurl += "Nashville,+TN";
+    //mapurl += "Washington,+DC";
+    mapurl += address;
+
+
+    var lat;
+    var lng;
+    var coord;
+
+    //Used to find the latitude and longitude
+    $.ajax({
+            url: mapurl,
+            type: 'GET',
+            dataType: 'json', // perhaps jsonp
+            success: function (json) {
+                //alert("Success");
+                lat =json.results[00]["geometry"]["location"].lat;
+                lng = json.results[00]["geometry"]["location"].lng;
+                coord = lat + lng;
+                //location = "" + lat + "," + "" + lng;
+                document.getElementById("lat").textContent = json.results[00]["geometry"]["location"].lat;
+                document.getElementById("long").textContent = json.results[00]["geometry"]["location"].lng;
+            },
+            error: function (xhr, status, err) {
+                alert("ajax error: " + err.toString());
+            }
+
+    });
+
+    //
+    var API_key = "AIzaSyB8sCjeWMHJcCqvHNA0CknuFgXfJ80BKg0";
+    var weburl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+    var cuisine = "none selected";
+    var minprice = "0";
+    var maxprice = "4";
+    var distance = 0;
+    var numPeople =0;
+    //var location = "" + lat + "," + "" + lng;
+
+
+    // compute the distances, lengths, and cuisine of the preferences
+
+    $.ajax({
+        url: mapurl,
+        type: 'GET',
+        dataType: 'json', // perhaps jsonp
+        success: function (json) {
+            alert("Success");
+
+            // search every class of distance and
+            // add them together
+            $(".distance").each(function () {
+                // get the value as raw text
+                var value = $(this).text();
+
+                //output value for debugging
+                // alert(value);
+
+                if (!isNaN(value) && value.length != 0) {
+
+                    //sum the distance for total distance
+                    distance += parseInt(value, 10);
+
+                    //find total number of people at the same time
+                    numPeople +=1;
                 }
-            });
+            })
 
+            document.getElementById("newdistance").textContent = distance;
+
+            var priceArray = { "cheap": 0, "frugal": 1, "fancy": 2, "rich": 3, "fancy": 4 };
+
+            $(".price").each(function() {
+                // get the value as raw text
+                var value = $(this).text();
+
+                //output value for debugging
+                alert(value);
+                if (!isNaN(value) && value.length != 0) {
+
+                    //sum the distance for total distance
+                    maxprice += priceArray(value);
+                }
+
+            })
+            // find the average 
+            maxprice = Math.floor(maxprice / numPeople);
+
+            document.getElementById("newprice")
+
+        },
+        error: function (xhr, status, err) {
+            alert("ajax error: " + err.toString());
+        }
+    });
+
+    // fetch the google map chosen restaurant
+    
+
+    // full version
+    foodurl = weburl + coord + "&opennow&keyword=" + cuisine + "&maxprice="+maxprice+"&rankby=distance&types=food|cafe&key="+API_key;
+    
+    // limited version
+    foodurl = weburl + coord + "&radius="+distance+"&rankby=distance&types=food|cafe&key=" + API_key;
+
+    // example below
+    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.1215,%20-115.1739&keyword=%22+cuisine+%22&minprice=%22+minprice+%22&maxprice=%22+maxprice+%22&rankby=distance&types=food&key=AIzaSyB8sCjeWMHJcCqvHNA0CknuFgXfJ80BKg0"
+
+    //$.ajax({
+    //    url: foodurl,
+    //    type: 'GET',
+    //    dataType: 'json', // perhaps jsonp
+    //    success: function (json) {
+
+    //        //document.getElementById("favorite").textContent = json.results[00].name;
+    //        alert("Success");
+            
+    //    },
+    //    error: function (xhr, status, err) {
+    //        alert("ajax error: " + err.toString());
+    //    }
+    //});
+
+
+    // below makes CORS Request
+    // from html5rocks.com/en/tutorials/cors/ by Monsur Hossain
+    // Create the XHR object.
+    function createCORSRequest(method, url) {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+            // XHR for Chrome/Firefox/Opera/Safari.
+            xhr.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined") {
+            // XDomainRequest for IE.
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+            // CORS not supported.
+            xhr = null;
+        }
+        return xhr;
+    }
+
+    // Helper method to parse the title tag from the response.
+    function getTitle(text) {
+        return text.match('<title>(.*)?</title>')[1];
+    }
+
+    // Make the actual CORS request.
+    function makeCorsRequest() {
+        // All HTML5 Rocks properties support CORS.
+        //var url = 'http://updates.html5rocks.com';
+        var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.1215,%20-115.1739&keyword=%22+cuisine+%22&minprice=%22+minprice+%22&maxprice=%22+maxprice+%22&rankby=distance&types=food&key=AIzaSyB8sCjeWMHJcCqvHNA0CknuFgXfJ80BKg0';
+        var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+coord;
+
+        var xhr = createCORSRequest('GET', url);
+        if (!xhr) {
+            alert('CORS not supported');
+            return;
+        }
+
+        // Response handlers.
+        xhr.onload = function () {
+            var text = xhr.responseText;
+
+            //Passes in text and finds the title
+            //var title = getTitle(text);
+            //var title = text;
+
+            var foodjson = JSON.parse(text);
+            document.getElementById("favorite").textContent = foodjson.results[00].name;
+            //alert('Response from CORS request to ' + url + ': ' + title);
+        };
+
+        xhr.onerror = function () {
+            alert('Woops, there was an error making the request.');
+        };
+
+        xhr.send();
+    }
+
+    makeCorsRequest();
 
 </script>
     <div>
+        <h5>Current Coordinates:</h5>
         <p id="lat">
             not found
         </p>
         <p id="long">
             not found
         </p>
+
+        <p id="newprice">
+            price limit 
+        </p>
     </div>
 
     <div>
-        hi
-        whats up
-        this is where the group resturant answer is
-        <p id="favorite">
 
+  
 
-
+   
+        <p>
+            total distance:
         </p>
+        <p id="newdistance">
+            distance
+        </p>
+        <button type="button" onclick="loadDoc()">Change Content</button>
 
+        <h2 id="favorite">
 
+            The Chosen Restaurant
 
+        </h2>
 
     </div>

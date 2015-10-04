@@ -189,6 +189,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\backgroundrays.jpg" />
+    <Content Include="Content\backgroundfood.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\freelancer.css" />
@@ -243,24 +245,24 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Groups\Create.cshtml" />
-    <Content Include="Views\Groups\Delete.cshtml" />
-    <Content Include="Views\Groups\Details.cshtml" />
-    <Content Include="Views\Groups\Edit.cshtml" />
-    <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Shared\_PreferenceEditor.cshtml" />
     <Content Include="Views\People\EditCopy.cshtml" />
     <Content Include="Views\Shared\_GroupRestaurant.cshtml" />
-    <Content Include="Views\Preferences\Create.cshtml" />
-    <Content Include="Views\Preferences\Delete.cshtml" />
-    <Content Include="Views\Preferences\Details.cshtml" />
-    <Content Include="Views\Preferences\Edit.cshtml" />
-    <Content Include="Views\Preferences\Index.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\People\Delete.cshtml" />
     <Content Include="Views\People\Details.cshtml" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\Preferences\Create.cshtml" />
+    <Content Include="Views\Preferences\Delete.cshtml" />
+    <Content Include="Views\Preferences\Details.cshtml" />
+    <Content Include="Views\Preferences\Edit.cshtml" />
+    <Content Include="Views\Preferences\Index.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

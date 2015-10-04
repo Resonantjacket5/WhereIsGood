@@ -47,7 +47,7 @@ namespace WhereIsGood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GroupID,Title,City")] Group group)
+        public ActionResult Create([Bind(Include = "GroupID,Title,Address")] Group group)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WhereIsGood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GroupID,Title,City")] Group group)
+        public ActionResult Edit([Bind(Include = "GroupID,Title,Address")] Group group)
         {
             if (ModelState.IsValid)
             {

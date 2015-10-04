@@ -2,14 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="col-lg-12" style="background-image:url(../../Content/backgroundrays.jpg); padding: 14em;">
     <h1>Food for Us</h1>
-    <p class="lead">Food for Us perfect to find the best restaurant for your group.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p class="lead">Food for Us is perfect to find the best restaurant for your group.</p>
+    <p><a href="~/Groups/Create" class="btn btn-primary btn-lg">Create New Group &raquo;</a></p>
 </div>
 <div class="row">
-    <div class="col-mid-6">
-        Script below: 
+    <div class="col-lg-12" class="img-responsive">
+        @*<img class="img-responsive" src="~/Content/backgroundrays.jpg" alt="" />*@
         <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
         <script type="text/javascript">
 
@@ -36,14 +36,7 @@
 
    
         </script>
-        <p id="uncool">
-            not changed
-        </p>
 
-        <p id="cool">
-            what
-        </p>
-        <button type="button" onclick="loadDoc()">Change Content</button>
 
 
         @*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js">

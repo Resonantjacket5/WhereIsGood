@@ -50,7 +50,7 @@ namespace WhereIsGood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PreferenceID,Distance,GroupID,PersonID,Cuisine")] Preference preference)
+        public ActionResult Create([Bind(Include = "PreferenceID,Distance,GroupID,PersonID,PriceLevel,Cuisine")] Preference preference)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace WhereIsGood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PreferenceID,Distance,GroupID,PersonID,Cuisine")] Preference preference)
+        public ActionResult Edit([Bind(Include = "PreferenceID,Distance,GroupID,PersonID,PriceLevel,Cuisine")] Preference preference)
         {
             if (ModelState.IsValid)
             {

@@ -20,11 +20,44 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd id="address">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Preferences)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.City)
+            <table class="table">
+                <tr>
+                    <th>Person</th>
+                    <th>Distance</th>
+                    <th>Price</th>
+                    <th>Cuisine</th>
+                </tr>
+                @foreach(var item in Model.Preferences)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Person.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Distance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PriceLevel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cuisine)
+                        </td>
+                    </tr>
+
+                }
+            </table>
         </dd>
 
         <dt>
@@ -34,6 +67,7 @@
         <dd>
             @Html.Partial("_GroupRestaurant")
         </dd>
+
     </dl>
 </div>
 <p>

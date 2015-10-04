@@ -11,7 +11,7 @@ namespace WhereIsGood.Models
         [Key]
         public int GroupID { get; set; }
         public string Title { get; set; }
-        public string City { get; set; }
+        public string Address { get; set; }
         // public int Credits { get; set; }
 
 
