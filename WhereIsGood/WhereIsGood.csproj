@@ -250,12 +250,12 @@
     <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Shared\_PreferenceEditor.cshtml" />
     <Content Include="Views\People\EditCopy.cshtml" />
+    <Content Include="Views\Shared\_GroupRestaurant.cshtml" />
     <Content Include="Views\Preferences\Create.cshtml" />
     <Content Include="Views\Preferences\Delete.cshtml" />
     <Content Include="Views\Preferences\Details.cshtml" />
     <Content Include="Views\Preferences\Edit.cshtml" />
     <Content Include="Views\Preferences\Index.cshtml" />
-    <Content Include="Views\Shared\_GroupRestaurant.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\People\Delete.cshtml" />
     <Content Include="Views\People\Details.cshtml" />

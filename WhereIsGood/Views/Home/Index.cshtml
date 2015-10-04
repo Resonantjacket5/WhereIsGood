@@ -13,32 +13,28 @@
         <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
         <script type="text/javascript">
 
-            var mapurl = "https://maps.googleapis.com/maps/api/geocode/xml?address=Nashville,+TN"
+            var mapurl = "https://maps.googleapis.com/maps/api/geocode/json?address=Nashville,+TN";
 
-            //$.ajax({
-            //    url: mapurl,
-            //    dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
-            //    success: function (json) {
-            //        // do stuff with json (in this case an array)
-            //        alert("Success");
-            //    },
-            //    error: function () {
-            //        alert("Error");
-            //    }
-            //});
+            $.ajax({
+                url: mapurl,
+                type: 'GET',
+                dataType: 'json', // perhaps jsonp
+                success: function (json) {
+                    // do stuff with json (in this case an array)
+                    alert("Success");
+                    //document.getElementById("uncool").textContent =  json.results['geometry']['bounds']['northeast'].lat;
 
-            function loadDoc() {
-                var mapurl = "https://maps.googleapis.com/maps/api/geocode/xml?address=Nashville,+TN"
-                var xhttp = new XMLHttpRequest();
-                document.getElementById("uncool").innerHTML = "changed";
-                xhttp.open("GET", mapurl, true);
-                xhttp.sent("");
-                
-               
-                document.getElementById("cool").innerHTML = xhttp.responseText;
-            }
 
-            
+
+                    document.getElementById("uncool").textContent = json.results[00]["geometry"]["bounds"]["northeast"].lat;
+
+                },
+                error: function (xhr, status, err) {
+                    alert("ajax error: " + err.toString());
+                }
+            });
+
+   
         </script>
         <p id="uncool">
             not changed

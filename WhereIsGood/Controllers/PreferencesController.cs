@@ -41,7 +41,7 @@ namespace WhereIsGood.Controllers
         public ActionResult Create()
         {
             ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title");
-            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName");
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "FirstName");
             return View();
         }
 
@@ -60,7 +60,7 @@ namespace WhereIsGood.Controllers
             }
 
             ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title", preference.GroupID);
-            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName", preference.PersonID);
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "FirstName", preference.PersonID);
             return View(preference);
         }
 
@@ -77,7 +77,7 @@ namespace WhereIsGood.Controllers
                 return HttpNotFound();
             }
             ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title", preference.GroupID);
-            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName", preference.PersonID);
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "FirstName", preference.PersonID);
             return View(preference);
         }
 
@@ -95,7 +95,7 @@ namespace WhereIsGood.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.GroupID = new SelectList(db.Groups, "GroupID", "Title", preference.GroupID);
-            ViewBag.PersonID = new SelectList(db.Persons, "ID", "LastName", preference.PersonID);
+            ViewBag.PersonID = new SelectList(db.Persons, "ID", "FirstName", preference.PersonID);
             return View(preference);
         }
 
