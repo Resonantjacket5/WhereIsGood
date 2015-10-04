@@ -7,7 +7,87 @@
     <p class="lead">Food for Us perfect to find the best restaurant for your group.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
+<div class="row">
+    <div class="col-mid-6">
+        Script below: 
+        <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+        <script type="text/javascript">
 
+            var mapurl = "https://maps.googleapis.com/maps/api/geocode/xml?address=Nashville,+TN"
+
+            //$.ajax({
+            //    url: mapurl,
+            //    dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
+            //    success: function (json) {
+            //        // do stuff with json (in this case an array)
+            //        alert("Success");
+            //    },
+            //    error: function () {
+            //        alert("Error");
+            //    }
+            //});
+
+            function loadDoc() {
+                var mapurl = "https://maps.googleapis.com/maps/api/geocode/xml?address=Nashville,+TN"
+                var xhttp = new XMLHttpRequest();
+                document.getElementById("uncool").innerHTML = "changed";
+                xhttp.open("GET", mapurl, true);
+                xhttp.sent("");
+                
+               
+                document.getElementById("cool").innerHTML = xhttp.responseText;
+            }
+
+            
+        </script>
+        <p id="uncool">
+            not changed
+        </p>
+
+        <p id="cool">
+            what
+        </p>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+
+
+        @*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js">
+
+            var uri = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
+
+            uri+="Nashville,+TN";
+
+
+            $(document).ready(function() {
+            // Send an AJAX request
+            $.getJSON(apiUrl)
+            .done(function(data) {
+            // On success, 'data' contains a list of products.
+            $.each(data, function(key, item) {
+            // Add a list item for the product.
+            $('
+            <li>
+                ', { text: formatItem(item) }).appendTo($('#products'));
+                });
+                });
+                });
+            function formatItem(item) {
+            return item.Name + ': $' + item.Price;
+            }
+
+            function find() {
+            var id = $('#prodId').val();
+            $.getJSON(uri + '/' + id)
+            .done(function (data) {
+            $('#product').text(formatItem(data));
+            })
+            .fail(function (jqXHR, textStatus, err) {
+            $('#product').text('Error: ' + err);
+            });
+            }
+        </script>*@
+    </div>
+
+</div>
 
 
 @*<div class="row">

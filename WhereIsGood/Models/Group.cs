@@ -7,6 +7,7 @@ namespace WhereIsGood.Models
     {
         // if uncommented requires manually entering in ID number
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+
         public int GroupID { get; set; }
         public string Title { get; set; }
         public string City { get; set; }

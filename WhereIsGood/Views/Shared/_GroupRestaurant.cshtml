@@ -1,7 +1,62 @@
-﻿
-<div>
-    hi
-    whats up
-    this is where the group resturant answer is 
+﻿<script type="text/javascript">
+    var xhr = new XMLHttpRequest();
 
-</div>
+    xhr.open("GET")
+</script>
+<script type="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js">
+
+    var uri = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
+
+    uri+="Nashville,+TN";
+
+
+    $(document).ready(function() {
+    // Send an AJAX request
+    $.getJSON(apiUrl)
+        .done(function(data) {
+        // On success, 'data' contains a list of products.
+        $.each(data, function(key, item) {
+            // Add a list item for the product.
+            $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+            });
+        });
+    });
+</script>
+  
+    @{
+        //Example Address
+        String address = "Nashville,+TN";
+        String geocode_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
+        String requestURL = "String";
+
+        var apiKey = "";
+
+        var wc = new WebClient();
+        try
+        {
+            //return wc.UploadString(geocode_url);
+        }
+        catch (NullReferenceException e)
+        {
+
+        }
+
+
+
+    }
+
+
+    <div>
+        hi
+        whats up
+        this is where the group resturant answer is
+        <p id="favorite">
+
+
+
+        </p>
+
+
+
+
+    </div>
