@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace WhereIsGood.Models
 {
@@ -7,7 +8,7 @@ namespace WhereIsGood.Models
     {
         // if uncommented requires manually entering in ID number
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-
+        [Key]
         public int GroupID { get; set; }
         public string Title { get; set; }
         public string City { get; set; }

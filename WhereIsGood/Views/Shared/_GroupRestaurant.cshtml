@@ -1,50 +1,47 @@
-﻿<script type="text/javascript">
-    var xhr = new XMLHttpRequest();
+﻿
 
-    xhr.open("GET")
-</script>
-<script type="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js">
+@*<dt>
+    Current Preferred Restaurant:
+</dt>
 
-    var uri = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
+<dd>
+    @Html.Partial("_GroupRestaurant")
+</dd>*@
 
-    uri+="Nashville,+TN";
 
 
-    $(document).ready(function() {
-    // Send an AJAX request
-    $.getJSON(apiUrl)
-        .done(function(data) {
-        // On success, 'data' contains a list of products.
-        $.each(data, function(key, item) {
-            // Add a list item for the product.
-            $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+            var mapurl = "https://maps.googleapis.com/maps/api/geocode/json?address=Nashville,+TN";
+
+            $.ajax({
+                url: mapurl,
+                type: 'GET',
+                dataType: 'json', // perhaps jsonp
+                success: function (json) {
+                    alert("Success");
+
+                    document.getElementById("lat").textContent = json.results[00]["geometry"]["bounds"]["northeast"].lat;
+                    document.getElementById("lat").textContent = json.results[00]["geometry"]["location"].lng;
+                },
+                error: function (xhr, status, err) {
+                    alert("ajax error: " + err.toString());
+                }
             });
-        });
-    });
+
+
 </script>
-  
-    @{
-        //Example Address
-        String address = "Nashville,+TN";
-        String geocode_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
-        String requestURL = "String";
-
-        var apiKey = "";
-
-        var wc = new WebClient();
-        try
-        {
-            //return wc.UploadString(geocode_url);
-        }
-        catch (NullReferenceException e)
-        {
-
-        }
-
-
-
-    }
-
+    <div>
+        <p id="lat">
+            not found
+        </p>
+        <p id="long">
+            not found
+        </p>
+    </div>
 
     <div>
         hi

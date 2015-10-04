@@ -15,24 +15,24 @@
 
             var mapurl = "https://maps.googleapis.com/maps/api/geocode/json?address=Nashville,+TN";
 
-            $.ajax({
-                url: mapurl,
-                type: 'GET',
-                dataType: 'json', // perhaps jsonp
-                success: function (json) {
-                    // do stuff with json (in this case an array)
-                    alert("Success");
-                    //document.getElementById("uncool").textContent =  json.results['geometry']['bounds']['northeast'].lat;
+            //$.ajax({
+            //    url: mapurl,
+            //    type: 'GET',
+            //    dataType: 'json', // perhaps jsonp
+            //    success: function (json) {
+            //        // do stuff with json (in this case an array)
+            //        alert("Success");
+            //        //document.getElementById("uncool").textContent =  json.results['geometry']['bounds']['northeast'].lat;
 
 
 
-                    document.getElementById("uncool").textContent = json.results[00]["geometry"]["bounds"]["northeast"].lat;
+            //        document.getElementById("uncool").textContent = json.results[00]["geometry"]["bounds"]["northeast"].lat;
 
-                },
-                error: function (xhr, status, err) {
-                    alert("ajax error: " + err.toString());
-                }
-            });
+            //    },
+            //    error: function (xhr, status, err) {
+            //        alert("ajax error: " + err.toString());
+            //    }
+            //});
 
    
         </script>

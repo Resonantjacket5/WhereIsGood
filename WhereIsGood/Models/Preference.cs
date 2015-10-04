@@ -10,6 +10,11 @@ namespace WhereIsGood.Models
         Mexican, Italian, Mediterranean, American, Asian, Vegetarian
     }
 
+    public enum PriceLevel
+    {
+        Cheap, Frugal, Casual, Rich, Fancy
+    }
+
     public class Preference
     {
         [Key]
@@ -17,6 +22,7 @@ namespace WhereIsGood.Models
         public int Distance { get; set; }
         public int GroupID { get; set; }
         public int PersonID { get; set; }
+        public PriceLevel? PriceLevel { get; set; }
         public Cuisine? Cuisine { get; set; }
 
         public virtual Group Group { get; set; }
